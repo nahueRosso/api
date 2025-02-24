@@ -35,6 +35,15 @@ class UsersService {
     }
   }
 
+  async delateUser (id){
+    const index = this.users.findIndex(item => item.id === id);
+    if (index === -1) {
+      throw boom.notFound('product not found');
+    }
+    this.products.splice(index, 1);
+    return { id };
+  }
+
 }
 
 module.exports = UsersService;
